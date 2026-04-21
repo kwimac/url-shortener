@@ -10,7 +10,7 @@ This repo contains simple Django app allowing to create shorten URL.
 4. Install project dependencies (including dev dependencies): `uv sync`
 5. Create `src/.env` file from template `src/.env.template` and fill required values: `cp src/env.template src/.env`
 6. Run migrations for local DB: `uv run python ./manage.py migrate`
-<!-- 5. To check if all apackages are installed properly run tests - `uv run python ./manage.py test` -->
+7. To check if all apackages are installed properly run tests - `uv run python ./manage.py test`
 
 ## Local development
 

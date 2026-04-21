@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ShortURLModel
+from .models import ShortURL
 
 
 class ShortURLModelAdmin(admin.ModelAdmin):
@@ -14,4 +14,4 @@ class ShortURLModelAdmin(admin.ModelAdmin):
     search_fields = ["original_url", "hash"]
 
 
-admin.site.register(ShortURLModel, ShortURLModelAdmin)
+admin.site.register(ShortURL, ShortURLModelAdmin)

@@ -6,7 +6,7 @@ from django.db import models
 from model_utils.models import TimeStampedModel, UUIDModel
 
 
-class ShortURLModel(TimeStampedModel, UUIDModel):
+class ShortURL(TimeStampedModel, UUIDModel):
     original_url = models.URLField(null=False, unique=True, max_length=256)
     hash = models.CharField(null=False, unique=True, max_length=8)
 
