@@ -4,6 +4,8 @@ from django.db import IntegrityError
 from rest_framework import serializers
 
 from .models import ShortURLModel
+from .utils import standardize_url
+
 
 class URLSerializer(serializers.Serializer):
     class Meta:
@@ -17,6 +19,9 @@ class URLSerializer(serializers.Serializer):
     hash = serializers.CharField(read_only=True, max_length=10)
 
     def validate_url(self, url: str) -> str:
+        url = standardize_url(url)
+        if not url:
+            raise serializers.ValidationError("Given value is not a valid URL")
         if ShortURLModel.objects.filter(original_url=url).first():
             raise serializers.ValidationError("URL arleady in DB")
         return url

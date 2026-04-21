@@ -1,5 +1,5 @@
 import hashlib
-from uuid import uuid4, UUID
+import uuid
 
 from django.db import models
 
@@ -11,7 +11,7 @@ class ShortURLModel(TimeStampedModel, UUIDModel):
     hash = models.CharField(null=False, unique=True, max_length=8)
 
     @staticmethod
-    def generate_hash(url: str) -> tuple[UUID, str]:
-        uuid = uuid4()
-        url_hash = hashlib.sha1(f"{url}_{uuid}".encode("UTF-8")).hexdigest()[:10]
-        return uuid, url_hash
+    def generate_hash(url: str) -> tuple[uuid.UUID, str]:
+        uuid_ = uuid.uuid4()
+        url_hash = hashlib.sha1(f"{url}_{uuid_}".encode("UTF-8")).hexdigest()[:10]
+        return uuid_, url_hash
